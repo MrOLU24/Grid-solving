@@ -1,16 +1,29 @@
 import { range } from './utils';
 
 const gridStyles = {
-  width: '100px',
-  height: '100px',
-  border: 'solid grey',
+  width: '170px',
+  height: '130px',
+  border: '1px solid grey',
   borderRadius: '5px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  fontSize: '14px',
 };
 
 function Grid({ numRows, numCols }) {
   return (
-    <div style={{}} className="grid">
-      {/* {todo} */}
+    <div className="grid">
+      {range(numRows).map((rowIndex) => (
+        <div key={rowIndex} style={{ display: 'flex' }}>
+          {range(numCols).map((colIndex) => (
+            <div key={colIndex} style={gridStyles}>
+              {`(${rowIndex}, ${colIndex})`}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
